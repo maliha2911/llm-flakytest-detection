@@ -147,7 +147,7 @@ def main():
     print("LoRA fine-tuning Mistral 7B for flaky test classification")
     print("=" * 80)
     print(f"Data       : {args.data}")
-    print(f"Model path : {args.model-path}")
+    print(f"Model path : {args.model_path}")
     print(f"Language   : {args.language}")
     print(f"Output dir : {output_dir.resolve()}")
     print(f"CUDA avail : {torch.cuda.is_available()}")
@@ -228,22 +228,23 @@ def main():
 
     # 6) TrainingArguments
     training_args = TrainingArguments(
-        output_dir=str(output_dir),
-        per_device_train_batch_size=args.per_device_train_batch_size,
-        per_device_eval_batch_size=args.per_device_eval_batch_size,
-        gradient_accumulation_steps=args.gradient_accumulation_steps,
-        num_train_epochs=args.num_train_epochs,
-        learning_rate=args.learning_rate,
-        weight_decay=args.weight_decay,
-        warmup_ratio=args.warmup_ratio,
-        logging_steps=args.logging_steps,
-        evaluation_strategy="steps",
-        eval_steps=args.eval_steps,
-        save_steps=args.save_steps,
-        save_total_limit=2,
-        bf16=torch.cuda.is_available(),  # use bf16 on A100/V100
-        lr_scheduler_type="cosine",
-        report_to="none",
+    output_dir=str(output_dir),
+    per_device_train_batch_size=args.per_device_train_batch_size,
+    per_device_eval_batch_size=args.per_device_eval_batch_size,
+    gradient_accumulation_steps=args.gradient_accumulation_steps,
+    num_train_epochs=args.num_train_epochs,
+    learning_rate=args.learning_rate,
+    weight_decay=args.weight_decay,
+    warmup_ratio=args.warmup_ratio,
+    logging_steps=args.logging_steps,
+    eval_strategy="steps",
+    eval_steps=args.eval_steps,
+    save_steps=args.save_steps,
+    save_total_limit=2,
+    bf16=False,
+    fp16=False,
+    lr_scheduler_type="cosine",
+    report_to="none",
     )
 
     trainer = Trainer(
