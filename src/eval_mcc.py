@@ -5,7 +5,7 @@ from sklearn.metrics import matthews_corrcoef
 from transformers import AutoTokenizer, AutoModelForCausalLM
 from tqdm import tqdm
 
-from your_lora_script import prepare_dataframe, make_prompt  # adjust import path
+from train_mistral_flaky_lora import prepare_dataframe, make_prompt
 
 
 def parse_args():
