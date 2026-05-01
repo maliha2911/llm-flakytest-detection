@@ -4,7 +4,7 @@ from transformers import AutoModelForCausalLM, AutoConfig
 
 def main():
     # TODO: change this if your model is in a different folder
-    model_path = "/home/miftahul/models/gpt-oss-20b"
+    model_path = "../../models/gpt-oss-20b"
 
     print(f"Loading config from: {model_path}")
     config = AutoConfig.from_pretrained(
